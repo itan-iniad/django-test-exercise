@@ -99,7 +99,7 @@ class TodoViewTestCase(TestCase):
         self.assertEqual(response.context["tasks"][0], task1)
         self.assertEqual(response.context["tasks"][1], task2)
 
-    def test_detail_get_success (self):
+    def test_detail_get_success(self):
         task = Task(title='task1', due_at=timezone.make_aware(datetime(2023, 7, 1)))
         task.save()
         client = Client()
@@ -112,5 +112,5 @@ class TodoViewTestCase(TestCase):
     def test_detail_get_fail(self):
         client = Client()
         response = client.get('/1/')
-        
+
         self.assertEqual(response.status_code, 404)
